@@ -9,6 +9,8 @@
 \usepackage{listings}
 \usepackage{enumitem}
 
+\lstset{basicstyle=\ttfamily}
+
 \newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
 
 \lhead{T-501-FMAL}
@@ -105,6 +107,11 @@ Explain.
 
             \item 1 is read
                 \begin{framed}
+\begin{lstlisting}
+  float x, y;
+  ...
+  if (f(x) mod 3 == 2) then y = f(i2f(5));
+\end{lstlisting}
                 \end{framed}
         \end{enumerate}
 
@@ -128,6 +135,9 @@ Explain.
 
 	\begin{framed}
 
+            The most general type of the function {\tt h} is 
+            
+            {\tt (<S> $\to$ <T>) $\times$ (<T> $\to$ string) $\times$ int $\to$ string}
 
 	\end{framed}
 
