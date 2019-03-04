@@ -135,8 +135,8 @@ Explain.
 
 	\begin{framed}
 
-            The most general type of the function {\tt h} is 
-            
+            The most general type of the function {\tt h} is
+
             {\tt (<S> $\to$ <T>) $\times$ (<T> $\to$ string) $\times$ int $\to$ string}
 
 	\end{framed}
@@ -164,7 +164,7 @@ p = new int;
 q = p;
 *q = 5;
 free(p);
-write(*p);
+write(*q);
 *q = *p + 1;
 write(*p);
 \end{lstlisting}
@@ -205,14 +205,25 @@ write(*s);
 
 %% SPURNING
 
-	\question Sample question
+      \question Suppose we have a language using the reference model (i.e. all variables are references, there is no explicit dereference operator). Memory is freed by a reference-counting garbage collector.\\
+        Conside yhe following program. State which stack and heap variables point to which objects after the execution of each line of the program and what the values of the reference counters of each object are (you can show only the information that changed during the execution of the line).\\
+        Which objects can be garbage-collected after the execution of the last line?
 
-	%%\begin{parts}
-	%%\end{pars}
+\begin{lstlisting}
+type C = ...;
+type D = record {C f; ...};
 
-	\quad
+C c1 = new C;    % o1 is allocated (and c1 initialized to point to o1)
+C c2;            % (c2 is initialized to null)
+D d1 = new D;    % o2 is allocated (and d1 initialized to point to o2)
+D d2 = new D;    % o3 is allocated
 
-	Question instructions
+d1.f = new C;    % o4 is allocated
+d2.f = c1;
+c1 = d1.f;
+c2 = c1;
+d2 = d1;
+\end{lstlisting}
 
 	\begin{framed}
 
