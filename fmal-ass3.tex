@@ -29,11 +29,13 @@
         \begin{enumerate}[label=(\roman*)]
             \item 0 is read
                 \begin{framed}
-                    If {\tt x} is zero, then we enter the first try block and set {\tt x} to $2\times 0 = 0$ and thus as we enter the second try block we do not raise {\tt E0} and add 4 and then an additional 1 to {\tt x} and it is now 5. We then leave the inner try block, go past the catch block and multiply ${\tt x} = 5 \times 7 = 35$. We then finally break out of the outer try and {\tt write(x)}
+                    If {\tt x} is zero, then we enter the first try block and set {\tt x} to $2\times 0 = 0$ and thus as we enter the second try block we do not raise {\tt E0} and add 4 and then an additional 1 to {\tt x} and it is now 5. We then leave the inner try block, go past the catch block and multiply ${\tt x} = 5 \times 7 = 35$. 
+                    We then finally break out of the outer try and {\tt write(x)} and output 35.
                 \end{framed}
 
             \item 1 is read
                 \begin{framed}
+                    If {\tt x} is one however, then since we set ${\tt x} = 1 \times 2 = 2$ as we enter the first try and thus will raise {\tt E0} 
                 \end{framed}
         \end{enumerate}
             
