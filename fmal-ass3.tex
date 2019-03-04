@@ -66,7 +66,7 @@ Explain.
 
             \item 1 is read
                 \begin{framed}
-                    If {\tt x} is one however, then since we set ${\tt x} = 1 \times 2 = 2$ as we enter the first try and thus will raise {\tt E0}
+                    If {\tt x} is one however, then since we set ${\tt x} = 1 \times 2 = 2$ as we enter the outer try and thus will raise {\tt E0} in the inner try and control will jump to the inner catch block, setting ${\tt x} = 2 * 5 = 10$. Following this we have an unconditional raise of {\tt E1} (meaning that the line {\tt x = x + 42175;} is unreachable) and control jumps to the outer catch block finally setting ${\tt x} = 10 + 10 = 20$ before breaking to the outermost block and {\tt write(x)} outputting 20.
                 \end{framed}
         \end{enumerate}
 
@@ -102,6 +102,9 @@ Explain.
         \begin{enumerate}[label=(\alph*)]
             \item 0 is read
                 \begin{framed}
+                    The function {\tt f} has the type {\tt float $\to$ int}.
+
+                    We know that {\tt f} returns {\tt int} because {\tt mod} accepts arguments only of that type. We can also see that {\tt f} takes in both a float and an integer, but since in this language {\tt int} is a subtype of {\tt float} and is thus implicitly converted we can safely assume that the input parameter of {\tt f} is a {\tt float}.
                 \end{framed}
 
             \item 1 is read
