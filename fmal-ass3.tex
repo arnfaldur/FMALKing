@@ -26,7 +26,6 @@
 %% SPURNING
 
 \question Consider the following program with exceptions:
-{\tt
   \begin{lstlisting}
     {
       int x;
@@ -52,7 +51,6 @@
         write(x);
       }
   \end{lstlisting}
-}
 What will be printed if (i) 0 is read. (ii) 1 is read?
 
 Explain.
@@ -81,13 +79,11 @@ Explain.
           and implicit conversions but no polymorphism. \\
           (Suppose also that {\tt int} has no proper subtypes and {\tt float} has no proper supertypes.)\\
           If the following program is well-typed. What is the type of the function {\tt f}?
-          {\tt
 \begin{lstlisting}
   float x, y;
   ...
   if (f(x) mod 3 == 2) then y = f(5);
 \end{lstlisting}
-          }
           {\tt mod} only accepts arguments of type {\tt int}.\\
           Explain.
         \item Modify the program so it works when an explicit conversion {\tt i2f} is required to cast an {\tt int} value into a {\tt float} value.
@@ -117,7 +113,6 @@ Explain.
       \question Given the following function definition in a language
         with polymorphism and inferred types but no subtyping.\\
         Find the most general type of the function {\tt h} in the following program.
-        {\tt
 \begin{lstlisting}
   h(f, g, x) {
     if (x == 1) {
@@ -127,7 +122,6 @@ Explain.
     }
   }
 \end{lstlisting}
-        }
         Assume that $1$ is of type {\tt int}. {\tt "hello"} is of type {\tt string},
         and comparison for equality is only available for two values of the same type. \\
         Explain.
@@ -139,9 +133,48 @@ Explain.
 
 %% SPURNING
 
-	\question Sample question
+	\question Consider a programming language with pointer types and an explicit dereferencing operator. The programmer deallocates memory and {\emph there is no safety mechanism implemented to detect the emergence of dangling references}. Suppose that assigning to a pointer the value {\tt null} does not free the memory it pointed to, it merely sets the pointer value to {\tt null}, i.e. the pointer now does point anywhere. {\tt free} frees the memory pointed to by a given pointer without clearing it; it also leaves the pointer pointing there.
 
-	Question instructions
+      \begin{enumerate}[label=(\roman*)]
+      \item What does the following program print? Explain.
+\begin{lstlisting}
+int *p, *q;
+p = new int;
+q = p;
+*q = 5;
+write(*p);
+p = null;
+write(*q);
+\end{lstlisting}
+
+            \item What will the following program print? Explain.
+\begin{lstlisting}
+int *p, *q;
+p = new int;
+q = p;
+*q = 5;
+free(p);
+write(*p);
+*q = *p + 1;
+write(*p);
+\end{lstlisting}
+
+            \item What will the following program likely print? (Assume that free heap memory is tracked with a free list, so that the memory freed last will be taken into use anew first). Explain.
+\begin{lstlisting}
+int *p, *q, *r, *s;
+p = new int;
+q = p;
+*q = 5;
+free(p);
+p = null;
+free(q);
+r = new int;
+*r = 17;
+wirite(*q);
+s = new int;
+write(*s);
+\end{lstlisting}
+        \end{enumerate}
 
 	\begin{framed}
 
