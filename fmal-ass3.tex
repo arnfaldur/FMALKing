@@ -6,6 +6,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{framed}
+\usepackage{listings}
 \usepackage{enumitem}
 
 \newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
@@ -24,6 +25,41 @@
 
 %% SPURNING
 
+\question Consider the following program with exceptions:
+{\tt
+  \begin{lstlisting}
+    {
+      int x;
+      read(x);
+      try {
+        x = x * 2;
+        try {
+          if (x == 2) {
+            raise E0;
+          } else {
+            x = x + 4;
+
+            x = x + 1;
+          } catch (E0) {
+            x = x * 5;
+            raise(E1);
+            x = x + 42175;
+          }
+          x = x * 7;
+        } catch (E1) {
+          x = x + 10;
+        }
+        write(x);
+      }
+  \end{lstlisting}
+}	\quad
+
+	Question instructions
+
+	\begin{framed}
+
+
+	\end{framed}
 	\question Sample question
 
         \begin{enumerate}[label=(\roman*)]
@@ -38,12 +74,24 @@
                     If {\tt x} is one however, then since we set ${\tt x} = 1 \times 2 = 2$ as we enter the first try and thus will raise {\tt E0} 
                 \end{framed}
         \end{enumerate}
-            
+
 
 
 %% SPURNING
 
 	\question Sample question
+
+	%%\begin{parts}
+	%%\end{pars}
+
+	\quad
+
+	Question instructions
+
+	\begin{framed}
+
+
+	\end{framed}
 
         \begin{enumerate}[label=(\alph*)]
             \item 0 is read
@@ -54,14 +102,21 @@
                 \begin{framed}
                 \end{framed}
         \end{enumerate}
- 
+
 %% SPURNING
 
 	\question Sample question
 
+	%%\begin{parts}
+	%%\end{pars}
+
+	\quad
+
+	Question instructions
+
 	\begin{framed}
-		
-		
+
+
 	\end{framed}
 
 %% SPURNING
@@ -69,6 +124,12 @@
 	\question Sample question
 
 	Question instructions
+
+	\begin{framed}
+
+
+	\end{framed}
+
         \begin{enumerate}[label=(\roman*)]
             \item 1 is read
                 \begin{framed}
@@ -85,11 +146,23 @@
 
 	\question Sample question
 
+	%%\begin{parts}
+	%%\end{pars}
+
+	\quad
+
+	Question instructions
+
 	\begin{framed}
-		
-		
+
+
 	\end{framed}
 
 \end{questions}
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
