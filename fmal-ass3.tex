@@ -185,6 +185,7 @@ write(*p);
 
                 \end{framed}
         
+            \newpage
             \item What will the following program likely print? (Assume that free heap memory is tracked with a free list, so that the memory freed last will be taken into use anew first). Explain.
                 \begin{lstlisting}
 int *p, *q, *r, *s;
@@ -211,7 +212,7 @@ write(*s);
                 \end{framed}
         
         \end{enumerate}
-
+\newpage
 %% SPURNING
 
       \question Suppose we have a language using the reference model (i.e. all variables are references, there is no explicit dereference operator). Memory is freed by a reference-counting garbage collector.\\
@@ -236,6 +237,95 @@ d2 = d1;
 
 	\begin{framed}
 
+            {\tt
+            \begin{enumerate}
+                \item C c1 = new C;    % o1 is allocated (and c1 initialized to point to o1)
+
+                    \begin{tabular}{|l|l|}
+                        \hline
+                        c1 & o1 \\
+                        \hline
+                    \end{tabular}
+                \item C c2;            % (c2 is initialized to null)
+
+                    \begin{tabular}{|l|l|}
+                        \hline
+                        c1 & o1 \\
+                        c2 & null \\
+                        \hline
+                    \end{tabular}
+                \item D d1 = new D;    % o2 is allocated (and d1 initialized to point to o2)
+
+                    \begin{tabular}{|l|l|}
+                        \hline
+                        c1 & o1 \\
+                        c2 & null \\
+                        d1 & o2\{f: null\} \\
+                        \hline
+                    \end{tabular}
+                \item D d2 = new D;    % o3 is allocated
+
+                    \begin{tabular}{|l|l|}
+                        \hline
+                        c1 & o1 \\
+                        c2 & null \\
+                        d1 & o2\{f: null\} \\
+                        d2 & o3\{f: null\} \\
+                        \hline
+                    \end{tabular}
+                \item d1.f = new C;
+
+                    \begin{tabular}{|l|l|}
+                        \hline
+                        c1 & o1 \\
+                        c2 & null \\
+                        d1 & o2\{f: o4\} \\
+                        d2 & o3\{f: o1\} \\
+                        \hline
+                    \end{tabular}
+                \item d2.f = c1;
+
+                    \begin{tabular}{|l|l|}
+                        \hline
+                        c1 & o1 \\
+                        c2 & null \\
+                        d1 & o2\{f: o4\} \\
+                        d2 & o3\{f: o1\} \\
+                        \hline
+                    \end{tabular}
+                \item c1 = d1.f;
+
+                    \begin{tabular}{|l|l|}
+                        \hline
+                        c1 & o4 \\
+                        c2 & null \\
+                        d1 & o2\{f: o4\} \\
+                        d2 & o3\{f: o1\} \\
+                        \hline
+                    \end{tabular}
+                \item c2 = c1;
+
+                    \begin{tabular}{|l|l|}
+                        \hline
+                        c1 & o4 \\
+                        c2 & o4 \\
+                        d1 & o2\{f: o4\} \\
+                        d2 & o3\{f: o1\} \\
+                        \hline
+                    \end{tabular}
+                \item d2 = d1;
+
+                    \begin{tabular}{|l|l|}
+                        \hline
+                        c1 & o4 \\
+                        c2 & o4 \\
+                        d1 & o2\{f: o4\} \\
+                        d2 & o2\{f: o4\} \\
+                        \hline
+                    \end{tabular}
+            \end{enumerate}
+            }
+            Now objects {\tt o1} and {\tt o3} can be garbage collected.
 	\end{framed}
 
 \end{questions}
