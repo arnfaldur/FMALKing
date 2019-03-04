@@ -38,7 +38,7 @@
             raise E0;
           } else {
             x = x + 4;
-
+          }
             x = x + 1;
           } catch (E0) {
             x = x * 5;
@@ -60,13 +60,13 @@ Explain.
         \begin{enumerate}[label=(\roman*)]
             \item 0 is read
                 \begin{framed}
-                    If {\tt x} is zero, then we enter the first try block and set {\tt x} to $2\times 0 = 0$ and thus as we enter the second try block we do not raise {\tt E0} and add 4 and then an additional 1 to {\tt x} and it is now 5. We then leave the inner try block, go past the catch block and multiply ${\tt x} = 5 \times 7 = 35$. 
+                    If {\tt x} is zero, then we enter the first try block and set {\tt x} to $2\times 0 = 0$ and thus as we enter the second try block we do not raise {\tt E0} and add 4 and then an additional 1 to {\tt x} and it is now 5. We then leave the inner try block, go past the catch block and multiply ${\tt x} = 5 \times 7 = 35$.
                     We then finally break out of the outer try and {\tt write(x)} and output 35.
                 \end{framed}
 
             \item 1 is read
                 \begin{framed}
-                    If {\tt x} is one however, then since we set ${\tt x} = 1 \times 2 = 2$ as we enter the first try and thus will raise {\tt E0} 
+                    If {\tt x} is one however, then since we set ${\tt x} = 1 \times 2 = 2$ as we enter the first try and thus will raise {\tt E0}
                 \end{framed}
         \end{enumerate}
 
@@ -76,12 +76,23 @@ Explain.
 
 	\question Sample question
 
-	%%\begin{parts}
-	%%\end{pars}
+        \begin{enumerate}[label=(\alph*)]
+        \item Suppose {\tt int} is a subtype of {\tt float} in a language with subtyping
+          and implicit conversions but no polymorphism. \\
+          (Suppose also that {\tt int} has no proper subtypes and {\tt float} has no proper supertypes.)\\
+          If the following program is well-typed. What is the type of the function {\tt f}?
+          {\tt
+\begin{lstlisting}
+  float x, y;
+  ...
+  if (f(x) mod 3 == 2) then y = f(5);
+\end{lstlisting}
+          }
+          {\tt mod} only accepts arguments of type {\tt int}.\\
+          Explain.
+        \item Modify the program so it works when an explicit conversion {\tt i2f} is required to cast an {\tt int} value into a {\tt float} value.
 
-	\quad
-
-	Question instructions
+        \end{enumerate}
 
 	\begin{framed}
 
