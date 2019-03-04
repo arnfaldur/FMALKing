@@ -119,10 +119,18 @@ Explain.
         Find the most general type of the function {\tt h} in the following program.
         {\tt
 \begin{lstlisting}
-
+  h(f, g, x) {
+    if (x == 1) {
+      return "hello";
+    } else {
+      return g(f(x));
+    }
+  }
 \end{lstlisting}
         }
-
+        Assume that $1$ is of type {\tt int}. {\tt "hello"} is of type {\tt string},
+        and comparison for equality is only available for two values of the same type. \\
+        Explain.
 
 	\begin{framed}
 
